@@ -36,9 +36,17 @@ const setEventListeners = (inputEl, formEl, settings) => {
     toggleButtonState(formEl, settings);
   });
 };
-
+const disableSubmitButtonUponLoad = (formEl, settings) => {
+  window.addEventListener("load", () => {
+    signupFormList.forEach((formEl) => [toggleButtonState(formEl, settings)]);
+  });
+};
 const enableValidation = (settings) => {
   signupFormList.forEach((formEl) => {
+    formEl.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    disableSubmitButtonUponLoad(formEl, settings);
     const signupInputList = [
       ...formEl.querySelectorAll(settings.signupItemList),
     ];

@@ -1,34 +1,33 @@
-const errorMessages = {
-  "singup-first-name-error": "First Name cannot be empty",
-  "singup-last-name-error": "Last Name cannot be empty",
-  "signup-email-error": "Looks like this is not an email",
-  "signup-password-error": "Password cannot be empty",
-};
-
 const signupFormList = [...document.querySelectorAll(".signup-form")];
 const signupButton = document.querySelector(".signup-form__button");
 
 const checkValidity = (formEl, inputEl, settings) => {
+  const errorMessage = formEl.querySelector(`#${inputEl.id}-error`);
   if (!inputEl.validity.valid) {
     inputEl.classList.add(settings.signupFormErrorInput);
-    const errorMessage = formEl.querySelector(`#${inputEl.id}-error`);
-    errorMessage.textContent = errorMessages[`${errorMessage.id}`];
+
+    errorMessage.textContent = inputEl.validationMessage;
     errorMessage.classList.add(settings.signupFormErrorMessage);
   } else {
     inputEl.classList.remove(settings.signupFormErrorInput);
+    errorMessage.textContent = "";
+    errorMessage.classList.remove(settings.signupFormErrorMessage);
   }
 };
 
 const hasInvalidInput = (inputList) => {
-  inputList.some((inputEl) => !inputEl.validity.valid);
+  if (inputList.some((inputEl) => !inputEl.validity.valid) == true) {
+    return true;
+  }
+  return false;
 };
 
 const toggleButtonState = (formEl, settings) => {
   const inputList = [...formEl.querySelectorAll(settings.signupItemList)];
   if (hasInvalidInput(inputList)) {
-    settings.signupButton.disabled = true;
+    signupButton.disabled = true;
   } else {
-    settings.signupButton.disabled = false;
+    signupButton.disabled = false;
   }
 };
 const setEventListeners = (inputEl, formEl, settings) => {
@@ -50,9 +49,9 @@ const enableValidation = (settings) => {
 };
 
 enableValidation({
-  signupFormErrorMessage: ".signup-form__error-message",
+  signupFormErrorMessage: "signup-form__error-message_active",
   signupForm: ".signup-form",
   signupItemList: ".signup-form__item",
   signupButton: ".signup-form__button",
-  signupFormErrorInput: ".signup-form__item_error",
+  signupFormErrorInput: "signup-form__item_error",
 });

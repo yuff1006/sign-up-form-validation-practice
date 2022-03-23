@@ -22,7 +22,7 @@
   column-gap: 12%;
   margin: auto;
   max-width: 1280px;
-  height: 100vh;
+  min-height: 100vh;
   line-height: 1.2;
 }
 
@@ -59,6 +59,12 @@
   box-shadow: 0 7px 2px rgba(93, 85, 162, 0.2);
   margin-bottom: 30px;
   width: 100%;
+  transition: linear 0.3s opacity;
+  cursor: pointer;
+}
+
+.free-trial-button:hover {
+  opacity: 0.7;
 }
 .free-trial-button__unbold {
   font-weight: 400;
@@ -82,6 +88,15 @@
   padding: 20px 15px;
   box-sizing: border-box;
 }
+
+.signup-form__item_error {
+  border: 3px solid hsl(0, 100%, 74%);
+  background-image: url("./images/icon-error.svg");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  margin-bottom: 0;
+}
 .signup-form__button {
   text-transform: uppercase;
   background-color: hsl(154, 59%, 51%);
@@ -92,6 +107,15 @@
   padding: 20px 50px;
   font-weight: 500;
   width: 100%;
+  cursor: pointer;
+  transition: linear 0.3s opacity;
+}
+.signup-form__button:hover {
+  opacity: 0.8;
+}
+.signup-form__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .signup-form__fine-print {
   color: rgba(220, 220, 220, 1);
@@ -103,6 +127,18 @@
 .signup-form__fine-print_bold {
   color: hsl(0, 100%, 74%);
   font-weight: 600;
+}
+.signup-form__error-message {
+  display: none;
+}
+.signup-form__error-message_active {
+  display: inline-block;
+  color: hsl(0, 100%, 74%);
+  font-style: italic;
+  font-size: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1;
 }
 
 @media screen and (max-width: 768px) {

@@ -20,8 +20,6 @@
     />
 
     <title>Frontend Mentor | Intro component with sign up form</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -43,14 +41,15 @@
           </span>
         </button>
         <div class="signup__container">
-          <form class="signup-form">
+          <form class="signup-form" novalidategit>
             <input
               type="text"
-              minlength="2"
+              minlength="1"
               maxlength="30"
               class="signup-form__item"
               placeholder="First Name"
               id="signup-first-name"
+              required
             />
             <span
               id="signup-first-name-error"
@@ -58,11 +57,12 @@
             ></span>
             <input
               type="text"
-              minlength="2"
+              minlength="1"
               maxlength="30"
               class="signup-form__item"
               placeholder="Last Name"
               id="signup-last-name"
+              required
             />
             <span
               id="signup-last-name-error"
@@ -75,6 +75,7 @@
               class="signup-form__item"
               placeholder="Email Address"
               id="signup-email"
+              required
             />
             <span
               id="signup-email-error"
@@ -87,6 +88,7 @@
               class="signup-form__item"
               placeholder="Password"
               id="signup-password"
+              required
             />
             <span
               id="signup-password-error"

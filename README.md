@@ -2,6 +2,10 @@
 
 ![Design preview for the Intro component with sign up form coding challenge](./design/desktop-preview.jpg)
 
+## Programming Paradigm
+
+Refactored with **Object Oriented Programming** and **Modular JS**.
+
 ## The challenge
 
 Your challenge is to build out this introductory component and get it looking as close to the design as possible.
